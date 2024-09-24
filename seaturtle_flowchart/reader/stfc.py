@@ -10,7 +10,7 @@ class STFCReader:
     :type filename: str | pathlib.Path
     """
 
-    METADATA_PATTERN = re.compile(r"^\s*--meta \"(\w\s+)\" \"(.+)\"\n*")
+    METADATA_PATTERN = re.compile(r"^\s*--meta \"(.+?)\" \"(.+?)\"\n*")
 
     def __init__(self, filename: str | pathlib.Path) -> None:
         """Constructor method"""
@@ -56,7 +56,7 @@ class STFCReader:
             for line in stfc.readlines():
                 if result := re.findall(STFCReader.METADATA_PATTERN, line):
                     label, value = result[0]
-                    _metadata[label] = value
+                    _metadata[label.lower()] = value
 
         return _metadata
 

@@ -16,7 +16,6 @@ seaturtle_flowchart is a library that allows you to make flowcharts as SVGs prim
 :license: MIT, see LICENSE for more
 """
 
-import reader
 from .reader import *
 
 from .__version__ import (
